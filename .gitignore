@@ -1,6 +1,7 @@
 #output
 output/
 outputs/
+*.out
 
 #vscode
 .vscode/

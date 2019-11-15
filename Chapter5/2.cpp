@@ -19,7 +19,6 @@ int main() {
     }else {
         usleep(500);      
         cout << "goodbye" << endl;
-        
     }
     return 0;
 }
