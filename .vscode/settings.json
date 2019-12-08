@@ -3,6 +3,7 @@
         "*.cpp": "cpp",
         "*.py": "python",
         "*.tcc": "cpp",
-        "fstream": "cpp"
+        "fstream": "cpp",
+        "ostream": "cpp"
     }
 }
