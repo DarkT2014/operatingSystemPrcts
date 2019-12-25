@@ -19,7 +19,8 @@ int main(){
     // cout << "wait returns "<< ww << endl;
   }else {
     cout << "I am parent." << endl;
-    int wc = waitpid(rc, );
+    int *p = new int;//point to a val that store return val from waitpid
+    int wc = waitpid(rc, p, );
     printf("Hi, I am parent of %d (wc : %d)(pid:%d)\n", rc, wc, (int) getpid());
   }
   return 0;
