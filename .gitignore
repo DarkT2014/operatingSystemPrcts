@@ -4,4 +4,4 @@ outputs/
 *.out
 
 #vscode
-.vscode/
+.vscode/*
