@@ -1,3 +1,10 @@
+#ifdef _WIN32
+#include <intrin.h>
+#else
+#include <x86intrin.h>
+#endif
+
+
 #include <iostream>
 #include <fcntl.h>
 #include <sys/time.h>
@@ -17,8 +24,7 @@ int main() {
     int f = open("./61.txt", O_RDONLY);
     gettimeofday(&b, NULL);
     cout <<  b.tv_sec << "s, " << b.tv_usec <<"us"<< endl;
-
-
+    
     cout  << b.tv_usec - a.tv_usec <<"us" << endl;
 
 
@@ -35,4 +41,23 @@ int main() {
     cout <<  t3.tv_sec << "s, " << t3.tv_usec <<"us"<< endl;
     cout <<  t4.tv_sec << "s, " << t4.tv_usec <<"us"<< endl;
 
+    //the reason why use rdtscp() not rdtsc() is because of the multi-core of CPU.
+
+    // unsigned int ai;
+    // unsigned int bi;
+    // gettimeofday(&a, NULL);
+    unsigned int ui;
+    u_int64_t ai = __rdtscp(&ui);
+    int f2 = open("./62.txt", O_RDONLY);
+    u_int64_t bi = __rdtscp(&ui);
+    cout << "it takes " << bi-ai << " ticks" << endl;
+    cout << "ui is " << ui << "." << endl;
+    
+
+    u_int64_t ci = __rdtscp(&ui);
+    int f3 = open("./63.txt", O_RDONLY);
+    u_int64_t di = __rdtscp(&ui);
+    cout << "it takes " << di-ci << " ticks" << endl; 
+    cout << "ui is " << ui << "." << endl;
+    
 }
